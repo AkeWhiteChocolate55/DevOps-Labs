@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  nginx:
+    build: .
+    container_name: mynginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./html:/var/www/html:ro
+      - ./nginx-logs:/var/lib/nginx/logs
+      - ./nginx-tmp:/var/lib/nginx/tmp
+    restart: unless-stopped
